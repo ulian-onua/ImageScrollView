@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         }
         
         imageScrollView.setup()
-        imageScrollView.imageScrollViewDelegate = self
         imageScrollView.imageContentMode = .aspectFit
         imageScrollView.initialOffset = .center
         imageScrollView.display(image: images[index])
@@ -40,18 +39,4 @@ class ViewController: UIViewController {
         imageScrollView.display(image: images[index])
     }
     
-}
-
-extension ViewController: ImageScrollViewDelegate {
-    func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView) {
-        print("Did change orientation")
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        print("scrollViewDidEndZooming at scale \(scale)")
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll at offset \(scrollView.contentOffset)")
-    }
 }

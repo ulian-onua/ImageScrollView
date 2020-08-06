@@ -1,9 +1,5 @@
 import UIKit
 
-@objc public protocol ImageScrollViewDelegate: UIScrollViewDelegate {
-    func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView)
-}
-
 open class ImageScrollView: UIScrollView {
     
     @objc public enum ScaleMode: Int {
@@ -25,7 +21,6 @@ open class ImageScrollView: UIScrollView {
     
     @objc public private(set) var zoomView: UIImageView? = nil
     
-    @objc open weak var imageScrollViewDelegate: ImageScrollViewDelegate?
 
     var imageSize: CGSize = CGSize.zero
     private var pointToCenterAfterResize: CGPoint = CGPoint.zero
@@ -278,56 +273,13 @@ open class ImageScrollView: UIScrollView {
         // A weird bug that frames are not update right after orientation changed. Need delay a little bit with async.
         DispatchQueue.main.async {
             self.configureImageForSize(self.imageSize)
-            self.imageScrollViewDelegate?.imageScrollViewDidChangeOrientation(imageScrollView: self)
         }
     }
 }
 
 extension ImageScrollView: UIScrollViewDelegate {
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewDidScroll?(scrollView)
-    }
-
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewWillBeginDragging?(scrollView)
-    }
-
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        imageScrollViewDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-    }
-    
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        imageScrollViewDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
-    }
-    
-    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewWillBeginDecelerating?(scrollView)
-    }
-    
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewDidEndDecelerating?(scrollView)
-    }
-    
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
-    }
-    
-    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        imageScrollViewDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
-    }
-    
-    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        imageScrollViewDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
-    }
-    
     public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
         return false
-    }
-    
-    @available(iOS 11.0, *)
-    public func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        imageScrollViewDelegate?.scrollViewDidChangeAdjustedContentInset?(scrollView)
     }
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
@@ -336,7 +288,6 @@ extension ImageScrollView: UIScrollViewDelegate {
     
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         adjustFrameToCenter()
-        imageScrollViewDelegate?.scrollViewDidZoom?(scrollView)
     }
     
 }
