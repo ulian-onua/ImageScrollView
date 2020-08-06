@@ -17,6 +17,7 @@
 		61F313881C8A04710096BF64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F313861C8A04710096BF64 /* Main.storyboard */; };
 		61F3138A1C8A04710096BF64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61F313891C8A04710096BF64 /* Assets.xcassets */; };
 		61F3138D1C8A04710096BF64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F3138B1C8A04710096BF64 /* LaunchScreen.storyboard */; };
+		6F766F8B24DBE94600A47F2E /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F766F8A24DBE94600A47F2E /* ImageScrollView.swift */; };
 		E02C9B9990411837848B8AE1 /* Pods_ImageScrollViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A0FB7EA560B9F778B9A2EE /* Pods_ImageScrollViewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		61F313891C8A04710096BF64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61F3138C1C8A04710096BF64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61F3138E1C8A04710096BF64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F766F8A24DBE94600A47F2E /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		7B5BA4BEA28F0ABFBED66522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		ABEA9732278037A45B8BB744 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 				61F313891C8A04710096BF64 /* Assets.xcassets */,
 				61F3138B1C8A04710096BF64 /* LaunchScreen.storyboard */,
 				61F3138E1C8A04710096BF64 /* Info.plist */,
+				6F766F8A24DBE94600A47F2E /* ImageScrollView.swift */,
 			);
 			path = ImageScrollViewDemo;
 			sourceTree = "<group>";
@@ -127,7 +130,6 @@
 				61F3137B1C8A04710096BF64 /* Sources */,
 				61F3137C1C8A04710096BF64 /* Frameworks */,
 				61F3137D1C8A04710096BF64 /* Resources */,
-				96B1EA2E91EDF0C09241896B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,24 +212,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		96B1EA2E91EDF0C09241896B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ImageScrollViewDemo/Pods-ImageScrollViewDemo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageScrollViewDemo/Pods-ImageScrollViewDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -235,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F766F8B24DBE94600A47F2E /* ImageScrollView.swift in Sources */,
 				61F313851C8A04710096BF64 /* ViewController.swift in Sources */,
 				61F313831C8A04710096BF64 /* AppDelegate.swift in Sources */,
 			);

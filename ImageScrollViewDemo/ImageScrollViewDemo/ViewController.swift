@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ImageScrollView
 
 class ViewController: UIViewController {
     
