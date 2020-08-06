@@ -19,8 +19,14 @@ open class ImageScrollView: UIScrollView {
     @objc open var imageContentMode: ScaleMode = .widthFill
     @objc open var initialOffset: Offset = .begining
     
-    @objc public private(set) var zoomView: UIImageView? = nil
+    @objc public private(set) var zoomView: ZoomedImageView? = nil
     
+    
+    lazy var yellowView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.yellow.withAlphaComponent(0.4)
+        return view
+    }()
 
     var imageSize: CGSize = CGSize.zero
     private var pointToCenterAfterResize: CGPoint = CGPoint.zero
@@ -164,9 +170,17 @@ open class ImageScrollView: UIScrollView {
             zoomView.removeFromSuperview()
         }
         
-        zoomView = UIImageView(image: image)
+        zoomView = ZoomedImageView(image: image)
+        zoomView?.delegate = self
+        zoomView?.layer.borderWidth = 5.0
+        zoomView?.layer.borderColor = UIColor.red.cgColor
         zoomView!.isUserInteractionEnabled = true
         addSubview(zoomView!)
+        
+
+        
+        addSubview(yellowView)
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageScrollView.doubleTapGestureRecognizer(_:)))
         tapGesture.numberOfTapsRequired = 2
@@ -290,4 +304,11 @@ extension ImageScrollView: UIScrollViewDelegate {
         adjustFrameToCenter()
     }
     
+}
+
+
+extension ImageScrollView: ZoomedImageViewDelegate {
+    func zoomedImageViewFrameDidChanged(_ frame: CGRect) {
+        yellowView.frame = frame
+    }
 }
